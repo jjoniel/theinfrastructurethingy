@@ -1,42 +1,27 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr 350px;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas:
+    "header header header"
+    "controls map metrics";
+  height: 100vh;
+  width: 100vw;
+  gap: 8px;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+.header-grid-area { grid-area: header; }
+.control-panel-grid-area { grid-area: controls; }
+.map-window-grid-area { grid-area: map; }
+.metrics-panel-grid-area { grid-area: metrics; }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.panel {
+  background-color: var(--panel-bg-color);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
