@@ -1,0 +1,16 @@
+:root {
+  --bg-color: #121212;
+  --panel-bg-color: #1e1e1e;
+  --border-color: #333;
+  --text-color: #e0e0e0;
+  --primary-color: #4dabf7;
+  --font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+}

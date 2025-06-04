@@ -1,0 +1,27 @@
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr 350px;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas:
+    "header header header"
+    "controls map metrics";
+  height: 100vh;
+  width: 100vw;
+  gap: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.header-grid-area { grid-area: header; }
+.control-panel-grid-area { grid-area: controls; }
+.map-window-grid-area { grid-area: map; }
+.metrics-panel-grid-area { grid-area: metrics; }
+
+.panel {
+  background-color: var(--panel-bg-color);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

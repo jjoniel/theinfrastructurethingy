@@ -1,0 +1,57 @@
+.control-panel {
+    padding: 15px;
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.panel-section {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+.panel-section:last-child {
+    border-bottom: none;
+}
+
+.panel-title {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.icon-button, .tool-button, .learn-button {
+    background-color: #333;
+    color: var(--text-color);
+    border: 1px solid #444;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.icon-button:hover, .tool-button:hover, .learn-button:hover {
+    background-color: #454545;
+}
+
+.tool-button, .learn-button {
+    width: 100%;
+    margin-bottom: 8px;
+    justify-content: center;
+}
+
+.learn-button {
+    justify-content: space-between;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+}
