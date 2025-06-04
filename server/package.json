@@ -1,0 +1,25 @@
+{
+  "name": "theinfrastructurethingy",
+  "version": "1.0.0",
+  "description": "a informational game about building better transport systems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjoniel/theinfrastructurethingy.git"
+  },
+  "author": "Joniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjoniel/theinfrastructurethingy/issues"
+  },
+  "homepage": "https://github.com/jjoniel/theinfrastructurethingy#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
