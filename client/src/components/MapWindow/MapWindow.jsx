@@ -11,7 +11,7 @@ if (MAPBOX_TOKEN && MAPBOX_TOKEN !== 'YOUR_MAPBOX_ACCESS_TOKEN') {
 const cityImageMap = {
     'Springfield': '/images/cities/city1.png',
     'Metropolis': '/images/cities/city2.png',
-    'Gotham City': '/images/cities/city3.png',
+    'Arkham City': '/images/cities/city3.png',
 };
 
 const MapWindow = ({ city }) => {

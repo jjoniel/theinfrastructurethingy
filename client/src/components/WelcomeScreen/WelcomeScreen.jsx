@@ -2,7 +2,7 @@ import React from 'react';
 import './WelcomeScreen.css';
 
 const WelcomeScreen = ({ onCitySelect }) => {
-    const cities = ['Springfield', 'Metropolis', 'Gotham City'];
+    const cities = ['Springfield', 'Metropolis', 'Arkham City'];
 
     return (
         <div className="welcome-overlay">
