@@ -5,8 +5,12 @@ import ControlPanel from './components/ControlPanel/ControlPanel.jsx';
 import MapWindow from './components/MapWindow/MapWindow.jsx';
 import MetricsPanel from './components/MetricsPanel/MetricsPanel.jsx';
 import EducationalModal from './components/EducationalModal/EducationalModal.jsx';
+import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen.jsx';
 
 function App() {
+    const [showWelcome, setShowWelcome] = useState(true);
+    const [selectedCity, setSelectedCity] = useState(null);
+
     const [isModalOpen, setModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState({ title: '', content: '' });
 
@@ -16,6 +20,11 @@ function App() {
             content: `This is where the detailed explanation for ${topic} would go. You can explain the concept with text, images, and diagrams here.`,
         });
         setModalOpen(true);
+    };
+
+    const handleCitySelect = (city) => {
+        setSelectedCity(city);
+        setShowWelcome(false);
     };
 
     return (
@@ -28,12 +37,13 @@ function App() {
                     <ControlPanel onLearnMoreClick={openEducationalModal} />
                 </div>
                 <div className="map-window-grid-area panel">
-                    <MapWindow />
+                    <MapWindow city={selectedCity} />
                 </div>
                 <div className="metrics-panel-grid-area panel">
                     <MetricsPanel />
                 </div>
             </div>
+
             <EducationalModal
                 isOpen={isModalOpen}
                 onClose={() => setModalOpen(false)}
@@ -41,6 +51,8 @@ function App() {
             >
                 <p>{modalContent.content}</p>
             </EducationalModal>
+
+            {showWelcome && <WelcomeScreen onCitySelect={handleCitySelect} />}
         </>
     );
 }

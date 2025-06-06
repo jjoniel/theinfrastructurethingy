@@ -1,56 +1,64 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef} from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './MapWindow.css';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuNjhib3QiLCJhIjoiY21hdDZhZmZpMGFidTJqb2lmNmZnZXRmdyJ9.AS1DsjNRhA8ylzhnx9P84g';
+const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2FuNjhib3QiLCJhIjoiY21hdDZhZmZpMGFidTJqb2lmNmZnZXRmdyJ9.AS1DsjNRhA8ylzhnx9P84g';
+if (MAPBOX_TOKEN && MAPBOX_TOKEN !== 'YOUR_MAPBOX_ACCESS_TOKEN') {
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+}
 
-const MapWindow = () => {
+const cityImageMap = {
+    'Springfield': '/images/cities/city1.png',
+    'Metropolis': '/images/cities/city2.png',
+    'Gotham City': '/images/cities/city3.png',
+};
+
+const MapWindow = ({ city }) => {
     const mapContainerRef = useRef(null);
     const mapInstanceRef = useRef(null);
 
-    const initialLng = -98.5795;
-    const initialLat = 39.8283;
-    const initialZoom = 3.5;
-
-    const [, setCurrentLng] = useState(initialLng);
-    const [, setCurrentLat] = useState(initialLat);
-    const [, setCurrentZoom] = useState(initialZoom);
-
     useEffect(() => {
-        if (mapInstanceRef.current || !mapContainerRef.current) return;
+        if (city) {
+            if (mapInstanceRef.current) {
+                mapInstanceRef.current.remove();
+                mapInstanceRef.current = null;
+            }
+            return;
+        }
 
-        mapInstanceRef.current = new mapboxgl.Map({
-            container: mapContainerRef.current,
-            style: 'mapbox://styles/mapbox/dark-v11',
-            center: [initialLng, initialLat],
-            zoom: initialZoom,
-        });
+        if (!mapInstanceRef.current && mapContainerRef.current) {
+            if (!MAPBOX_TOKEN || MAPBOX_TOKEN === 'YOUR_MAPBOX_ACCESS_TOKEN') {
+                console.error("Mapbox token is not set. Map cannot be initialized.");
+                return;
+            }
 
-        const map = mapInstanceRef.current;
-
-        map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-        const updateMapViewState = () => {
-            setCurrentLng(map.getCenter().lng.toFixed(4));
-            setCurrentLat(map.getCenter().lat.toFixed(4));
-            setCurrentZoom(map.getZoom().toFixed(2));
-        };
-
-        map.on('move', updateMapViewState);
-        map.on('zoom', updateMapViewState);
+            mapInstanceRef.current = new mapboxgl.Map({
+                container: mapContainerRef.current,
+                style: 'mapbox://styles/mapbox/dark-v11',
+                center: [-98.5795, 39.8283],
+                zoom: 3.5,
+            });
+        }
 
         return () => {
-            map.off('move', updateMapViewState);
-            map.off('zoom', updateMapViewState);
-            map.remove();
-            mapInstanceRef.current = null;
+            if (mapInstanceRef.current) {
+                mapInstanceRef.current.remove();
+                mapInstanceRef.current = null;
+            }
         };
-    }, [initialLng]);
+    }, [city]);
 
     return (
-        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-            <div ref={mapContainerRef} className="map-container" style={{ width: '100%', height: '100%' }} />
+        <div className="map-window-container">
+            {city && cityImageMap[city] ? (
+                <div
+                    className="map-image-background"
+                    style={{ backgroundImage: `url(${cityImageMap[city]})` }}
+                />
+            ) : (
+                <div ref={mapContainerRef} className="map-container" />
+            )}
         </div>
     );
 };
