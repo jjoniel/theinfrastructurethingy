@@ -12,10 +12,18 @@
   box-sizing: border-box;
 }
 
-.header-grid-area { grid-area: header; }
-.control-panel-grid-area { grid-area: controls; }
-.map-window-grid-area { grid-area: map; }
-.metrics-panel-grid-area { grid-area: metrics; }
+.header-grid-area {
+  grid-area: header;
+}
+.control-panel-grid-area {
+  grid-area: controls;
+}
+.map-window-grid-area {
+  grid-area: map;
+}
+.metrics-panel-grid-area {
+  grid-area: metrics;
+}
 
 .panel {
   background-color: var(--panel-bg-color);

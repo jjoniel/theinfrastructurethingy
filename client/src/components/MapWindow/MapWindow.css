@@ -1,18 +1,18 @@
 .map-window-container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .map-image-background {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .map-container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
