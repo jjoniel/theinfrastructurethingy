@@ -1,0 +1,71 @@
+.welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-content {
+  background-color: var(--panel-bg-color);
+  padding: 40px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.welcome-title {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.welcome-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.welcome-description p {
+  margin-bottom: 1em;
+}
+
+.welcome-actions h3 {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.city-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.city-buttons button {
+  background-color: var(--primary-color);
+  color: #121212;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.city-buttons button:hover {
+  transform: translateY(-2px);
+  background-color: #74c0fc;
+}
